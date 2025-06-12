@@ -1,5 +1,5 @@
 {
-  "name": "@deriv/core",
+  "name": "@tradeprofx/core",
   "version": "1.0.0",
   "description": "TradeProfx Core - Professional Trading Platform Core Module",
   "main": "index.js",
@@ -11,6 +11,7 @@
     "serve": "f() { echo \"Serving TradeProfx...\" && ../../node_modules/.bin/webpack serve --config \"./build/webpack.config.js\" --env open $1;}; f",
     "build": "f () { webpack --config \"./build/webpack.config.js\" --env base=$1 --env IS_CRYPTO_APP=${IS_CRYPTO_APP:-false};}; f",
     "build:travis": "echo \"No build:travis specified\"",
+    "build:cloudflare": "webpack --config \"./build/webpack.config.js\" --env base=app",
     "test:eslint": "eslint \"./src/**/*.?(js|jsx|ts|tsx)\"",
     "deploy": "npm run build && gh-pages -d dist --remove=\"js\"",
     "deploy:clean": "npm run build && gh-pages -d dist",
