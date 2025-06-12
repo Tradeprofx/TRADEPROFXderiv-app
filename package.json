@@ -82,7 +82,7 @@
     "stylelint-selector-bem-pattern": "^2.1.0",
     "stylelint-webpack-plugin": "^2.1.1",
     "ts-jest": "^29.2.5"
-  ],
+  },
   "scripts": {
     "analyze:build": "nx run-many --target=analyze:build",
     "analyze:stats": "nx run-many --target=analyze:stats",
