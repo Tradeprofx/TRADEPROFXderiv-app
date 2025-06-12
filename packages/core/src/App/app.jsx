@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 
 import { APIProvider } from '@deriv/api';
 import { CashierStore } from '@deriv/cashier';
-import { CFDStore } from '@deriv/cfd';
+// CFD removed
 import { Loading } from '@deriv/components';
 import {
     initFormErrorMessages,
     POIProvider,
-    setSharedCFDText,
+    // setSharedCFDText, // removed
     setUrlLanguage,
     setWebsocket,
     useOnLoadTranslation,
@@ -23,7 +23,7 @@ import { getInitialLanguage, initializeI18n, TranslationProvider } from '@deriv-
 
 import WS from 'Services/ws-methods';
 
-import { CFD_TEXT } from '../Constants/cfd-text';
+// import { CFD_TEXT } from '../Constants/cfd-text'; // removed
 import { FORM_ERROR_MESSAGES } from '../Constants/form-error-messages';
 
 import AppContent from './AppContent';
@@ -43,9 +43,9 @@ const AppWithoutTranslation = ({ root_store }) => {
         root_store.modules.cashier.general_store.init();
     };
     const { i18n } = useTranslation();
-    const initCFDStore = () => {
-        root_store.modules.attachModule('cfd', new CFDStore({ root_store, WS }));
-    };
+    // const initCFDStore = () => {
+    //     root_store.modules.attachModule('cfd', new CFDStore({ root_store, WS }));
+    // };
     const { preferred_language } = root_store.client;
     const { is_dark_mode_on } = root_store.ui;
     const is_dark_mode = is_dark_mode_on || JSON.parse(localStorage.getItem('ui_store'))?.is_dark_mode_on;
@@ -95,7 +95,7 @@ const AppWithoutTranslation = ({ root_store }) => {
 
     React.useEffect(() => {
         initCashierStore();
-        initCFDStore();
+        // initCFDStore(); // removed
         const loadSmartchartsStyles = () => {
             import('@deriv/deriv-charts/dist/smartcharts.css');
         };
@@ -105,7 +105,7 @@ const AppWithoutTranslation = ({ root_store }) => {
         // TODO: [translation-to-shared]: add translation implemnentation in shared
         setUrlLanguage(getLanguage());
         initFormErrorMessages(FORM_ERROR_MESSAGES);
-        setSharedCFDText(CFD_TEXT);
+        // setSharedCFDText(CFD_TEXT); // removed
         root_store.common.setPlatform();
         loadSmartchartsStyles();
 

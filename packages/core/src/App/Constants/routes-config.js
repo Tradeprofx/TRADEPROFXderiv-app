@@ -12,9 +12,10 @@ import Endpoint from 'Modules/Endpoint';
 import OSRedirect from '../Containers/OSRedirect';
 import CallbackPage from '../../Modules/Callback/CallbackPage.tsx';
 
-const CFDCompareAccounts = React.lazy(
-    () => import(/* webpackChunkName: "cfd-compare-accounts" */ '@deriv/cfd/src/Containers/cfd-compare-accounts')
-);
+// CFD imports removed
+// const CFDCompareAccounts = React.lazy(
+//     () => import(/* webpackChunkName: "cfd-compare-accounts" */ '@deriv/cfd/src/Containers/cfd-compare-accounts')
+// );
 
 // Error Routes
 const Page404 = React.lazy(() => import(/* webpackChunkName: "404" */ 'Modules/Page404'));
@@ -26,12 +27,13 @@ const Reports = React.lazy(() => {
     return import(/* webpackChunkName: "reports" */ '@deriv/reports');
 });
 
-const CFD = React.lazy(() =>
-    moduleLoader(() => {
-        // eslint-disable-next-line import/no-unresolved
-        return import(/* webpackChunkName: "cfd" */ '@deriv/cfd');
-    })
-);
+// CFD lazy loader removed
+// const CFD = React.lazy(() =>
+//     moduleLoader(() => {
+//         // eslint-disable-next-line import/no-unresolved
+//         return import(/* webpackChunkName: "cfd" */ '@deriv/cfd');
+//     })
+// );
 
 const Account = React.lazy(() =>
     moduleLoader(() => {
@@ -101,21 +103,22 @@ const getModules = () => {
                 },
             ],
         },
-        {
-            path: routes.dxtrade,
-            component: props => <CFD {...props} platform='dxtrade' />,
-            getTitle: () => localize('Deriv X'),
-        },
-        {
-            path: routes.compare_cfds,
-            component: CFDCompareAccounts,
-            getTitle: () => localize('Compare CFD accounts'),
-        },
-        {
-            path: routes.mt5,
-            component: props => <CFD {...props} platform='mt5' />,
-            getTitle: () => localize('MT5'),
-        },
+        // CFD routes removed:
+        // {
+        //     path: routes.dxtrade,
+        //     component: props => <CFD {...props} platform='dxtrade' />,
+        //     getTitle: () => localize('Deriv X'),
+        // },
+        // {
+        //     path: routes.compare_cfds,
+        //     component: CFDCompareAccounts,
+        //     getTitle: () => localize('Compare CFD accounts'),
+        // },
+        // {
+        //     path: routes.mt5,
+        //     component: props => <CFD {...props} platform='mt5' />,
+        //     getTitle: () => localize('MT5'),
+        // },
         {
             path: routes.account_closed,
             component: Account,
@@ -323,8 +326,7 @@ const getModules = () => {
                             getTitle: () => localize('P2P verification'),
                         },
                     ],
-                },
-                {
+                },{
                     id: 'gtm-onramp-tab',
                     path: routes.cashier_onramp,
                     component: Cashier,
